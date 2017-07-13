@@ -20,7 +20,6 @@ public class HomeController {
 		int sum   = num1 + num2;
 		ModelAndView view  = new ModelAndView("home");
 		view.addObject("result",sum);
-		
 		return view; 
 	}
 
