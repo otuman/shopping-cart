@@ -1,3 +1,42 @@
+body {
+	background: #eee !important;	
+}
+
+.panel-heading {
+    padding: 5px 15px;
+}
+
+.panel-footer {
+	padding: 1px 15px;
+	color: #A0A0A0;
+}
+
+.profile-img {
+	width: 96px;
+	height: 96px;
+	margin: 0 auto 10px;
+	display: block;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+centered-form{
+	margin-top: 60px;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+a, a.alert-link {
+    color: #337ab7;
+    text-decoration: none;
+}
+.h3, h3 {
+    font-size: 20px;
+}
+
 .starter-template{
 	margin-top:56px;
 }
@@ -15,3 +54,45 @@
 .bottom {
     vertical-align:bottom
 }
+.dropdown-menu,
+.navbar-default{
+	background-color:#ec7c23;
+}
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a {
+    color: #FFF;
+}
+.navbar-default .navbar-brand:hover{
+	color: #FFF;
+}
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.active>a:focus, 
+.navbar-default .navbar-nav>.active>a:hover {
+    color: #FFF;
+    background-color:#de5626;
+}
+.dropdown-menu>li>a:hover,
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:focus, 
+.navbar-default .navbar-nav>.open>a:hover {
+    color: #FFF;
+    background-color:#de5626;
+}
+.dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #FFF;
+    white-space: nowrap;
+}
+
+.price span{
+	color: #337ab7;
+	font-size:18px;
+	font-weight:600;
+	
+}
+

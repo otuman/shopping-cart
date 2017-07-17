@@ -13,7 +13,7 @@ public class ProductController {
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("shop/products/products");
-		
+		view.addObject("title", "Products");
 		return view;
 		
 	}
@@ -23,7 +23,7 @@ public class ProductController {
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("shop/products/product-single");
-		
+		view.addObject("title", "Product");
 		return view;
 		
 	}

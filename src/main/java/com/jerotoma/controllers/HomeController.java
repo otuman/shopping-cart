@@ -11,17 +11,23 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public ModelAndView home(){
-		return new ModelAndView("index"); 
+		ModelAndView view = new ModelAndView("index"); 	
+		view.addObject("title", "Home");
+		return view;
 	}
 
 	@RequestMapping("/about")
 	public ModelAndView about(){
-		return new ModelAndView("about");  
+	 ModelAndView view = new ModelAndView("support/about"); 	
+	 view.addObject("title", "About");
+	 return view; 	
 	}
 	
 	@RequestMapping("/contact")
 	public ModelAndView contact(){
-		return new ModelAndView("contact");  
+	    ModelAndView view = new ModelAndView("support/contact"); 	
+		view.addObject("title", "Contact");
+		return view; 
 	}
 
 
