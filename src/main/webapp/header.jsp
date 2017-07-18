@@ -42,13 +42,13 @@
 			        </div>
 			     </form>
 			      <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#"><i class="fa fa-shopping-cart fa-w" aria-hidden="true"></i> Cart <span class="badge">5</span></a></li>
-			        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> Wishlist <span class="badge">5</span></a></li>
+			        <li><a href="<%=request.getContextPath()%>/cart/show"><i class="fa fa-shopping-cart fa-w" aria-hidden="true"></i> Cart <span class="badge">5</span></a></li>
+			        <li><a href="<%=request.getContextPath()%>/checkout/show"><i class="fa fa-heart-o" aria-hidden="true"></i> Wishlist <span class="badge">5</span></a></li>
 			        <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
 			          <ul class="dropdown-menu">
 			            <li><a href="<%=request.getContextPath()%>/myaccount/login">Login</a></li>
-			            <li><a href="<%=request.getContextPath()%>/myaccount/register">Register</a></li>
+			            <li><a href="<%=request.getContextPath()%>/myaccount/create">Register</a></li>
 			            <li><a href="<%=request.getContextPath()%>/myaccount/support">Support</a></li>				           
 			          </ul>
 			        </li>
