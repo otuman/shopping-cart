@@ -53,7 +53,8 @@
 			          </ul>
 			        </li>
 			      </ul>
-		        </div><!--/.nav-collapse -->
-		      </div>
+		        </div><!-- /.navbar-collapse -->
+               </div><!-- /.container -->
 		    </nav>
-	   <div class="container">
+		   <div class="container">
+	  

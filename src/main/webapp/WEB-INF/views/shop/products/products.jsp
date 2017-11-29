@@ -1,4 +1,4 @@
-<jsp:include page = "/header.jsp" flush = "true" /> 
+<jsp:include page = "../../header.jsp" flush = "true" /> 
       <div class="starter-template">
         <h1>All Products</h1> 
         <div class="row"> 
@@ -52,4 +52,4 @@
 		   </div>
         </div>
       </div>
-<jsp:include page = "/footer.jsp" flush = "true" /> 
+<jsp:include page = "../../footer.jsp" flush = "true" /> 

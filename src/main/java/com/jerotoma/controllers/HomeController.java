@@ -29,6 +29,11 @@ public class HomeController {
 		view.addObject("title", "Contact");
 		return view; 
 	}
-
+	@RequestMapping("myaccount/support")
+	public ModelAndView support(){
+	    ModelAndView view = new ModelAndView("support/contact"); 	
+		view.addObject("title", "Support");
+		return view; 
+	}
 
 }
