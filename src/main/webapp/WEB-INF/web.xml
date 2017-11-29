@@ -7,8 +7,8 @@
    <display-name>Shopping Cart</display-name>
   
    <context-param>
-	  <param-name>Application Context</param-name>
-	  <param-value>/WEB-INF/application-context.xml</param-value>
+	  <param-name>applicationContext</param-name>
+	  <param-value>/WEB-INF/applicationContext.xml</param-value>
    </context-param>	    
    <servlet>
         <servlet-name>dispatcher</servlet-name>
@@ -19,6 +19,12 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>   
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    
+    <listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+  
+       
 </web-app>
