@@ -2,6 +2,7 @@ package com.jerotoma.controllers;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,10 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jerotoma.model.User;
+import com.jerotoma.services.UserService;
 
 @Controller
 @RequestMapping("/myaccount")
 public class AuthController {
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public ModelAndView loginView() {
@@ -45,9 +50,17 @@ public class AuthController {
 	@RequestMapping(value="/create",method=RequestMethod.POST)
 	public ModelAndView createView(@RequestParam Map<String, String> params) {
 		ModelAndView view =  new ModelAndView();
+		User user  = new User(params); 
+		userService.save(user);
+		
+		
 		view.setViewName("auth/signup");
 		view.addObject("title", "Register");
+		view.addObject("users", userService.users());
 		return view;
 	}
+	
+	
+	
 
 }
