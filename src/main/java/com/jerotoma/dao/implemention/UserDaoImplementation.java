@@ -18,7 +18,7 @@ public class UserDaoImplementation implements UserDao{
 	SessionFactory session;
 
 	public List<User> users() {
-		return session.getCurrentSession().createQuery("from users").list();
+		return session.getCurrentSession().createQuery("from User").list();
 	}
 
 	public boolean delete(User user) {
@@ -27,7 +27,7 @@ public class UserDaoImplementation implements UserDao{
 		try {
 			session.getCurrentSession().delete(user);
 			
-		}catch(Exception ex) {
+		}catch(Exception ex){
 			return false;
 		}
 		return true;

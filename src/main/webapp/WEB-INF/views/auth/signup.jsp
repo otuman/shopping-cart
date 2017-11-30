@@ -7,7 +7,7 @@
 			    		<h3 class="panel-title">Please sign up for Bootsnipp <small>It's free!</small></h3>
 			 			</div>
 			 			<div class="panel-body">
-			    		<form role="form" action="<%=request.getContextPath()%>/myaccount/create" method="POST">
+			    		<form id= "user-signup-form" role="form" action="<%=request.getContextPath()%>/myaccount/create" method="POST">
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
@@ -47,3 +47,40 @@
     	</div>
 	</div>
 <jsp:include page = "../footer.jsp" flush = "true" />  
+<script>
+     $(document).ready(function(){
+    	 var form = $("#user-signup-form");
+    	 form.on('submit', function(e){
+    		 e.preventDefault();
+    		var data = getFormData(form);
+    		console.log(data);
+    		$.ajax({
+    			url: form.attr( 'action' ),
+    			method:'POST',
+    			data:data,
+    			success:function(response){
+    				console.log("data received");
+    			},
+    			error:function(status, xhr, exhr){
+    				console.log("Error occurred");
+    			}
+    			
+    		});
+    		 
+    	 });  
+    	 
+    	 
+    	 function getFormData(form){
+   		    var unindexed_array = form.serializeArray();
+   		    var indexed_array = {};
+
+   		    $.map(unindexed_array, function(n, i){
+   		        indexed_array[n['name']] = n['value'];
+   		    });
+
+   		    return indexed_array;
+   		}
+     });
+
+
+</script>

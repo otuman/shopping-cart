@@ -50,6 +50,9 @@ public class AuthController {
 	@RequestMapping(value="/create",method=RequestMethod.POST)
 	public ModelAndView createView(@RequestParam Map<String, String> params) {
 		ModelAndView view =  new ModelAndView();
+		System.out.println(params.get("first_name"));
+		System.out.println(params);
+		
 		User user  = new User(params); 
 		userService.save(user);
 		
