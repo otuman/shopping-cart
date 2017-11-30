@@ -57,6 +57,9 @@ public class User implements Serializable {
 		this.lastName = params.get("last_name");
 		this.createdOn = new Date();
 		this.updatedOn = new Date();
+		
+		
+		System.out.println(params);
 	}
 	public User(String username, String password, String firstName, String lastName) {
 		super();
