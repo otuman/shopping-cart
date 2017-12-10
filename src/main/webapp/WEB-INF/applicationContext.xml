@@ -14,13 +14,13 @@
                            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 
-  <!-- Enable Auto wire -->
+   <!-- Enable Auto wire -->
    <context:annotation-config />
    
-  <!-- Specify base package -->
+   <!-- Specify base package -->
    <context:component-scan base-package="com.jerotoma" />
   
-  <!-- Enable MVC Auto wire -->
+   <!-- Enable MVC Annotation-driven -->
    <mvc:annotation-driven/>
  
    <!-- Define resources directory location -->
@@ -41,7 +41,7 @@
              <props>
                  <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 	             <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
-	             <prop key="hibernate.default_schema">test</prop>
+	             <prop key="hibernate.default_schema">shopping_cart</prop>
 	             <prop key="format_sql">true</prop>
 	             <prop key="use_sql_comments">true</prop>
 	             <prop key="hibernate.id.new_generator_mappings">false</prop>

@@ -59,6 +59,7 @@
     			method:'POST',
     			data:data,
     			success:function(response){
+    				console.log(response);
     				console.log("data received");
     			},
     			error:function(status, xhr, exhr){
