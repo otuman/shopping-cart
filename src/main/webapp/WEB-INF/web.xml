@@ -5,13 +5,23 @@
 
   >
    <display-name>Shopping Cart</display-name>
-  
-   <context-param>
-	  <param-name>applicationContext</param-name>
-	  <param-value>/WEB-INF/applicationContext.xml</param-value>
-   </context-param>	    
-   <servlet>
-   <servlet-name>dispatcher</servlet-name>
+   
+    <!--Spring Initialization part(It loads configuration files)  --> 
+    <listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> 
+	<context-param>
+	  <param-name>contextConfigLocation</param-name>
+	  <param-value>
+	         /WEB-INF/application-security.xml,
+	         /WEB-INF/applicationContext.xml
+	 </param-value>
+   </context-param>	
+   
+   
+    <!--Spring MVC configurations (servlet and servlet mapping)  --> 
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -19,7 +29,14 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>    
-    <listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>       
+       
+    <!--Spring Security Configuration part  --> 
+	<filter>
+	     <filter-name>springSecurityFilterChain</filter-name>
+	     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>	
+	</filter> 
+	<filter-mapping>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>     
 </web-app>

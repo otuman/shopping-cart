@@ -1,11 +1,13 @@
 package com.jerotoma.controllers;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,17 +34,21 @@ public class AuthController {
 		return view;
 	}
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public ModelAndView postLogin(@RequestParam("username")String username, @RequestParam("password")String password) {
+	public String postLogin(ModelMap model, Principal principal) {
 		
-		User user  = new User(username, password);		
-		ModelAndView view =  new ModelAndView();
-		view.setViewName("auth/login");
-		view.addObject("title", "Login");
-		view.addObject("user", user);
-		return view;
+		String username = principal.getName();
+		model.addAttribute("username", username);
+		model.addAttribute("message", "Conguratulations for successiful login");
+		return "dashboard/dashboard";
 	}
 	
-	
+	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	public ModelAndView signoutView() {
+		ModelAndView view =  new ModelAndView();
+		view.setViewName("auth/login");
+		view.addObject("title", "Signout");
+		return view;
+	}
 	
 	@RequestMapping(value="/create",method=RequestMethod.GET)
 	public ModelAndView signupView() {
