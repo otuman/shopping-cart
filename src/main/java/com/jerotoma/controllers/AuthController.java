@@ -33,14 +33,7 @@ public class AuthController {
 		view.addObject("title", "Login");
 		return view;
 	}
-	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String postLogin(ModelMap model, Principal principal) {
-		
-		String username = principal.getName();
-		model.addAttribute("username", username);
-		model.addAttribute("message", "Conguratulations for successiful login");
-		return "dashboard/dashboard";
-	}
+	
 	
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public ModelAndView signoutView() {
@@ -49,6 +42,15 @@ public class AuthController {
 		view.addObject("title", "Signout");
 		return view;
 	}
+	
+	@RequestMapping(value="/loginfailed",method=RequestMethod.GET)
+	public ModelAndView signInFailedView() {
+		ModelAndView view =  new ModelAndView();
+		view.setViewName("auth/login");
+		view.addObject("title", "Sing In Failed");
+		return view;
+	}
+	
 	
 	@RequestMapping(value="/create",method=RequestMethod.GET)
 	public ModelAndView signupView() {

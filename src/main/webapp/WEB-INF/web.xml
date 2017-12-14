@@ -5,8 +5,19 @@
 
   >
    <display-name>Shopping Cart</display-name>
-   
-    <!--Spring Initialization part(It loads configuration files)  --> 
+      
+    <!--Spring MVC configurations (servlet and servlet mapping)  --> 
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>    
+     
+     <!--Spring Initialization part(It loads configuration files)  --> 
     <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener> 
@@ -18,18 +29,6 @@
 	 </param-value>
    </context-param>	
    
-   
-    <!--Spring MVC configurations (servlet and servlet mapping)  --> 
-    <servlet>
-        <servlet-name>dispatcher</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>    
-       
     <!--Spring Security Configuration part  --> 
 	<filter>
 	     <filter-name>springSecurityFilterChain</filter-name>

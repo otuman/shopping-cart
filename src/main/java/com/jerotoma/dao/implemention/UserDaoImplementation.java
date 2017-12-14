@@ -46,4 +46,10 @@ public class UserDaoImplementation implements UserDao{
 		return true;
 	}
 
+	public User getCurrentUser(int id) {
+		// TODO Auto-generated method stub
+		
+		return (User)session.getCurrentSession().createQuery("from users where id='"+id+"'");
+	}
+
 }

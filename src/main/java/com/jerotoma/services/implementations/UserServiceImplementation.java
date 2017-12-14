@@ -37,4 +37,9 @@ public class UserServiceImplementation implements UserService {
 		return useDao.update(user);
 	}
 
+	public User getCurrentUser(int id) {
+		// TODO Auto-generated method stub
+		return useDao.getCurrentUser(id);
+	}
+
 }

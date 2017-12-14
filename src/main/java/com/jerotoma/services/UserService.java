@@ -6,6 +6,7 @@ import com.jerotoma.model.User;
 
 public interface UserService {
 	public List<User> users();
+	public User getCurrentUser(int id);
 	public boolean delete(User user);
 	public boolean save(User user);
 	public boolean update(User user);

@@ -1,3 +1,4 @@
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <jsp:include page = "../header.jsp" flush = "true" /> 
       <div class="starter-template">
 		<div class="row">
@@ -7,7 +8,7 @@
 						<strong> Sign in to continue</strong>
 					</div>
 					<div class="panel-body">
-						<form role="form" name='f' action="<%=request.getContextPath()%>/myaccount/j_spring_security_check" method="POST">
+						<form role="form" name='f' action="<c:url value='/login'></c:url>" method="POST">
 							<fieldset>
 								<div class="row">
 									<div class="center-block">
@@ -22,7 +23,7 @@
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-user"></i>
 												</span> 
-												<input class="form-control" placeholder="Username" name="j_username" type="text" autofocus>
+												<input class="form-control" placeholder="Username" name="username" type="text" value="" autofocus>
 											</div>
 										</div>
 										<div class="form-group">
@@ -30,7 +31,7 @@
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-lock"></i>
 												</span>
-												<input class="form-control" placeholder="Password" name="j_password" type="password" value="">
+												<input class="form-control" placeholder="Password" name="password" type="password" value="">
 											</div>
 										</div>
 										<div class="form-group">

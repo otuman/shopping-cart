@@ -21,6 +21,9 @@ public class User implements Serializable {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name="role_id")
+	private int roleID;
+	
 	@Column(name="username")
 	private String username;
 	
@@ -32,7 +35,7 @@ public class User implements Serializable {
 	
 	@Column(name="last_name")
 	private String lastName;
-	
+		
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="created_on")
 	private Date createdOn;
@@ -116,7 +119,14 @@ public class User implements Serializable {
 	private void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
+	
+	private int getRoleID(){
+		return roleID;
+	}
 
+	private void setRoleID(int roleID) {
+		this.roleID = roleID;
+	}
 	
 
 }
