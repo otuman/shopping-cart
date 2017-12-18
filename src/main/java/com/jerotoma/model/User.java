@@ -2,7 +2,6 @@ package com.jerotoma.model;
 
 import java.io.Serializable;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Map;
 
@@ -96,35 +95,35 @@ public class User implements Serializable {
 		this.lastName = lastName;
 	}
 
-	private int getId() {
+	public int getId() {
 		return id;
 	}
 
-	private void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	private Date getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
 
-	private void setCreatedOn(Date createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 
-	private Date getUpdatedOn() {
+	public Date getUpdatedOn() {
 		return updatedOn;
 	}
 
-	private void setUpdatedOn(Date updatedOn) {
+	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
 	
-	private int getRoleID(){
+	public int getRoleID(){
 		return roleID;
 	}
 
-	private void setRoleID(int roleID) {
+	public void setRoleID(int roleID) {
 		this.roleID = roleID;
 	}
 	

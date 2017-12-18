@@ -89,3 +89,32 @@ a, a.alert-link {
 	
 }
 
+.main-header {
+    position: fixed;
+    max-height: 100px;
+    z-index: 1030;
+    width:100%;
+}
+
+.content-header{
+	margin-top: 50px;
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 2px solid #3c8dbc;
+}
+
+.navbar-nav>.user-menu>.dropdown-menu>.user-body a {
+    color: #FFF !important;
+}
+.navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a>h4{
+	color:#FFF;
+}
+.navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a {
+    color: #FFF;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+}

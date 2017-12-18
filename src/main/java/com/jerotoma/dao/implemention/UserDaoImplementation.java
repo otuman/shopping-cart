@@ -48,8 +48,27 @@ public class UserDaoImplementation implements UserDao{
 
 	public User getCurrentUser(int id) {
 		// TODO Auto-generated method stub
+		User user = null;
+		List<User> users = session.getCurrentSession().createQuery("from User where id='"+id+"'").list();
+		if(!users.isEmpty() && users.size() == 1) {
+			for(User u : users) {
+				user = u;
+			}
+		}
+		return user;
+	}
+	
+	public User getCurrentUser(String username) {
+		// TODO Auto-generated method stub
 		
-		return (User)session.getCurrentSession().createQuery("from users where id='"+id+"'");
+		User user = null;
+		List<User> users = session.getCurrentSession().createQuery("from User where username='"+username+"'").list();
+		if(!users.isEmpty() && users.size() == 1) {
+			for(User u : users) {
+				user = u;
+			}
+		}
+		return user;	
 	}
 
 }

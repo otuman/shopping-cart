@@ -41,5 +41,10 @@ public class UserServiceImplementation implements UserService {
 		// TODO Auto-generated method stub
 		return useDao.getCurrentUser(id);
 	}
+	
+	public User getCurrentUser(String username) {
+		// TODO Auto-generated method stub
+		return useDao.getCurrentUser(username);
+	}
 
 }
