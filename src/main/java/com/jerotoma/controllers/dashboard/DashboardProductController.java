@@ -24,6 +24,7 @@ public class DashboardProductController {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("dashboard/pages/products/create");
 		view.addObject("title", "Products");
+		view.addObject("subtitle", "Add New Product");
 		return view;
 		
 	}

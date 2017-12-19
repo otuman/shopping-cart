@@ -2,8 +2,6 @@ body {
 	background: #eee !important;	
 }
 
-
-
 .profile-img {
 	width: 96px;
 	height: 96px;
@@ -117,4 +115,12 @@ hr {
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 10px;
+}
+.content-header>h1>small {
+    font-size: 16px;
+    display: inline-block;
+    padding-left: 4px;
+    font-weight: 300;
+    color:#255625;
+    font-weight:600;
 }
