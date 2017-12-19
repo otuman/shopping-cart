@@ -66,17 +66,37 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Products</span>
+            <i class="fa fa-share"></i> <span>Products</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<c:url value='/dashboard/products'></c:url>"><i class="fa fa-circle-o"></i> All Products</a></li>
-            <li><a href="<c:url value='/dashboard/products/create'></c:url>"><i class="fa fa-circle-o"></i> Add New</a></li>
-            <li><a href="<c:url value='/dashboard/products/categories'></c:url>"><i class="fa fa-circle-o"></i> Categories</a></li>
-            <li><a href="<c:url value='/dashboard/products/attributes'></c:url>"><i class="fa fa-circle-o"></i> Attributes</a></li>
+           <c:url var="baseURL" value='/dashboard/products'></c:url>
+            <li><a href="${baseURL}/"><i class="fa fa-circle-o"></i> All Products</a></li>
+            <li><a href="${baseURL}/create"><i class="fa fa-circle-o"></i> Add New</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Categories
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="${baseURL}/categories"><i class="fa fa-circle-o"></i> All Product Categories</a></li>
+                <li><a href="${baseURL}/categories/create"><i class="fa fa-circle-o"></i> Add New</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Product Attributes
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="${baseURL}/attributes"><i class="fa fa-circle-o"></i> All Product Attributes</a></li>
+                <li><a href="${baseURL}/attributes/create"><i class="fa fa-circle-o"></i> Add New</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li class="treeview">
@@ -158,40 +178,7 @@
             <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
             <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
           </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
+        </li>        
         <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
         <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>

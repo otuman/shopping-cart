@@ -1,4 +1,4 @@
-package com.jerotoma.controllers;
+package com.jerotoma.controllers.dashboard;
 
 import java.security.Principal;
 

@@ -5,10 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/shop")
 public class ProductController {
     
-	@RequestMapping("/products")
+	@RequestMapping("/shop/products")
 	public ModelAndView getProductView() {
 		
 		ModelAndView view = new ModelAndView();
@@ -18,7 +17,7 @@ public class ProductController {
 		
 	}
 	
-	@RequestMapping("/products/{name}")
+	@RequestMapping("/shop/products/{name}")
 	public ModelAndView getSingleProductView() {
 		
 		ModelAndView view = new ModelAndView();
@@ -27,4 +26,6 @@ public class ProductController {
 		return view;
 		
 	}
+	
+	
 }
