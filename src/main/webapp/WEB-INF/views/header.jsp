@@ -30,7 +30,8 @@
 		          </button>
 		          <a class="navbar-brand" href="<%=request.getContextPath()%>">Jerotoma</a>
 		        </div>
-		        <div id="navbar" class="collapse navbar-collapse">		         
+		        <div id="navbar" class="collapse navbar-collapse">
+		         
 		          <ul class="nav navbar-nav">
 		            <li class="active"><a href="${contextPath}">Home</a></li>
 		            <li><a href="${contextPath}shop/products">Products</a></li>
