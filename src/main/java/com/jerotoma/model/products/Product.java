@@ -39,6 +39,9 @@ public class Product implements Serializable {
 	@Column(name="updated_on")
 	private Date updatedOn;
 
+	public Product(){
+		
+	}
 	
 
 	public Product(Map<String, String> params){
@@ -50,56 +53,93 @@ public class Product implements Serializable {
 		this.updatedOn  = new Date();
 		
 	}
-	
-	
-	private int getId() {
+
+
+
+	public int getId() {
 		return id;
 	}
 
-	private void setId(int id) {
+
+
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	private String getName() {
+
+
+	public String getName() {
 		return name;
 	}
 
-	private void setName(String name) {
+
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	private String getDescription() {
+
+
+	public String getDescription() {
 		return description;
 	}
 
-	private void setDescription(String description) {
+
+
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	private float getPrice() {
+
+
+	public float getPrice() {
 		return price;
 	}
 
-	private void setPrice(float price) {
+
+
+	public void setPrice(float price) {
 		this.price = price;
 	}
 
-	private Date getCreatedOn() {
+
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+
+
+	public Date getCreatedOn() {
 		return createdOn;
 	}
 
-	private void setCreatedOn(Date createdOn) {
+
+
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 
-	private Date getUpdatedOn() {
+
+
+	public Date getUpdatedOn() {
 		return updatedOn;
 	}
 
-	private void setUpdatedOn(Date updatedOn) {
+
+
+	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
-   
+	
+	
+	
 	
 	
 }

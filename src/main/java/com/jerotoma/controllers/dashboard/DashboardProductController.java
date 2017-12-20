@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jerotoma.model.products.Product;
 import com.jerotoma.model.users.User;
+import com.jerotoma.services.ProductService;
 import com.jerotoma.services.UserService;
 
 @Controller
@@ -20,6 +22,9 @@ import com.jerotoma.services.UserService;
 public class DashboardProductController {
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ProductService productService;
 	
 	@RequestMapping(value= {"","/"},method=RequestMethod.GET)
 	public ModelAndView getIndexView(Principal principal) {
@@ -54,10 +59,10 @@ public class DashboardProductController {
 		
 		System.out.println(params);
 		
-		//User user  = new User(params); 
-		//userService.save(user);
+		Product product  = new Product(params); 
+		productService.save(product);
 		
-		map.put("users", userService.users());
+		map.put("products", productService.getProducts());
 		map.put("status", 200);
 		map.put("message", "Data found");
 				
