@@ -1,5 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <c:url var='contextPath' value='/'></c:url>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
@@ -40,20 +42,26 @@
 		          </ul>
 		          <form class="navbar-form navbar-left">
 			        <div class="form-group">
-			          <input type="text" class="form-control" placeholder="Search">
+			          <input type="text" value="" class="form-control" placeholder="Search">
 			        </div>
 			     </form>
 			      <ul class="nav navbar-nav navbar-right">
 			        <li><a href="${contextPath}cart/show"><i class="fa fa-shopping-cart fa-w" aria-hidden="true"></i> Cart <span class="badge">5</span></a></li>
 			        <li><a href="${contextPath}checkout/show"><i class="fa fa-heart-o" aria-hidden="true"></i> Wishlist <span class="badge">5</span></a></li>
-			        <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
-			          <ul class="dropdown-menu">
-			            <li><a href="${contextPath}myaccount/login">Login</a></li>
-			            <li><a href="${contextPath}myaccount/create">Register</a></li>
-			            <li><a href="${contextPath}myaccount/support">Support</a></li>				           
-			          </ul>
-			        </li>
+			        <sec:authorize access="isAuthenticated()">
+						<!-- <sec:authentication property="principal.username" />  -->
+						<li><a href="${contextPath}dashboard">Dashboard</a></li>		    
+				    </sec:authorize>
+				    <sec:authorize access="isAnonymous()">
+								 <li class="dropdown">
+						          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
+						          <ul class="dropdown-menu">
+						            <li><a href="${contextPath}myaccount/login">Login</a></li>
+						            <li><a href="${contextPath}myaccount/create">Register</a></li>
+						            <li><a href="${contextPath}myaccount/support">Support</a></li>				           
+						          </ul>
+						        </li>
+					</sec:authorize>			        
 			      </ul>
 		        </div><!-- /.navbar-collapse -->
                </div><!-- /.container -->

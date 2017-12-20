@@ -23,7 +23,7 @@ public class DashboardController {
 	}
 	
 	@RequestMapping(value= {"","/","/index","/home"},method=RequestMethod.GET)
-	public String index(ModelMap model, Principal principal) {
+	public String getIndex(ModelMap model, Principal principal) {
 		
 		String username = principal.getName();
 		User user = userService.getCurrentUser(username);

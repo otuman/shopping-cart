@@ -11,14 +11,13 @@
         <li class="active">${title}</li>
       </ol>
        <hr>
-    </section>
-   
+    </section>   
     <!-- Main content -->
     <section class="content">
          <div class="row">               
 	         <div class="col-md-6"></div>	           
          </div>
-      <form id="product-create-form" action="<c:url value='/dashboard/products/create'></c:url>" method="POST" enctype="multipart/form-data">
+      <form role="form" name="f" id="product-create-form" action="<c:url value='/dashboard/products/create'></c:url>" method="POST" enctype="multipart/form-data">
          <div class="row">
               <div class="col-md-6">	                    
 				  <div class="form-group">
@@ -70,7 +69,7 @@
          <div class="row">               
 	         <div class="col-md-4 col-md-offset-4">
 	             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	             <button type="submit" class="btn btn-success btn-block btn-lg">Create Product</button>
+	             <input type="submit" class="btn btn-success btn-block btn-lg" value="Create Product" />
 	         </div>	           
          </div>
        </form>
@@ -81,18 +80,16 @@
 <script type="text/javascript">
 <!-- -->
   $(document).ready(function(){
-	var createForm = $('#product-create-form');
+	
 		
-	createForm.on('submit', function(){
+	$('#product-create-form').on('submit', function(e){
 		 
-		var data = createForm.serializeArray();
-		postData(data,createForm.attr('action'));
+		var data = $(this).serializeArray(),
+		    url  = $(this).attr('action');
+		postData(data,url);
 		
-		return false;
-	})
-	
-	
-	
+		e.preventDefault();
+	});
 	
 	function postData(data, url){
 		

@@ -13,6 +13,7 @@
          <logout logout-success-url="/myaccount/logout"      
 				 logout-url="/logout"
 				 invalidate-session="true"/> 
+		<csrf/>
          <!-- <http-basic/>  -->
      </http>
    <!--   <authentication-manager>
