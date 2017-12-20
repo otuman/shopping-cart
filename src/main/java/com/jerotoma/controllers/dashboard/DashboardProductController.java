@@ -1,14 +1,18 @@
 package com.jerotoma.controllers.dashboard;
 
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jerotoma.model.User;
+import com.jerotoma.model.users.User;
 import com.jerotoma.services.UserService;
 
 @Controller
@@ -31,7 +35,7 @@ public class DashboardProductController {
 		
 	}
 	@RequestMapping(value="/create",method=RequestMethod.GET)
-	public ModelAndView getProductView(Principal principal) {
+	public ModelAndView getCreate(Principal principal) {
 		
 		String username = principal.getName();
 		User user = userService.getCurrentUser(username);
@@ -45,15 +49,21 @@ public class DashboardProductController {
 		
 	}
 	@RequestMapping(value="/create",method=RequestMethod.POST)
-	public ModelAndView postProductView() {
+	public @ResponseBody Map<String,Object> postCreate(@RequestParam Map<String, String> params) {
+		Map<String,Object> map =  new HashMap<String, Object>();
 		
-		ModelAndView view = new ModelAndView();
-		view.setViewName("dashboard/pages/products/create");
-		view.addObject("title", "Products");
-		view.addObject("subtitle", "Add New Product");
-		return view;
+		System.out.println(params);
 		
+		//User user  = new User(params); 
+		//userService.save(user);
+		
+		map.put("users", userService.users());
+		map.put("status", 200);
+		map.put("message", "Data found");
+				
+		return map;
 	}
+	
 	
 	@RequestMapping("/{id}")
 	public ModelAndView getShowView() {

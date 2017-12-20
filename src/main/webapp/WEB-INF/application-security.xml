@@ -7,14 +7,13 @@
                          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                          http://www.springframework.org/schema/security
                          http://www.springframework.org/schema/security/spring-security-4.2.xsd">
-     <http use-expressions="true">
+     <http auto-config="true" use-expressions="true">
          <intercept-url pattern="/dashboard/**" access="hasRole('ROLE_USER')" />
          <form-login login-page="/myaccount/login" default-target-url="/dashboard"  authentication-failure-url="/myaccount/loginfailed" />
          <logout logout-success-url="/myaccount/logout"      
 				 logout-url="/logout"
 				 invalidate-session="true"/> 
-		<csrf/>
-         <!-- <http-basic/>  -->
+		<!-- <http-basic/>  -->
      </http>
    <!--   <authentication-manager>
            <authentication-provider>

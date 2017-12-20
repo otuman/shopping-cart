@@ -2,7 +2,7 @@ package com.jerotoma.services;
 
 import java.util.List;
 
-import com.jerotoma.model.User;
+import com.jerotoma.model.users.User;
 
 public interface UserService {
 	public List<User> users();

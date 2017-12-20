@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jerotoma.dao.UserDao;
-import com.jerotoma.model.User;
+import com.jerotoma.model.users.User;
 
 @Repository
 @Transactional

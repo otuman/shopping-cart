@@ -8,7 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.jerotoma.model.User;
+import com.jerotoma.model.users.User;
 import com.jerotoma.services.UserService;
 
 @Controller

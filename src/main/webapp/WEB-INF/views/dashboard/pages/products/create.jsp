@@ -1,5 +1,6 @@
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
  <%@ page isELIgnored="false"%>
  <jsp:include page ="../../header.jsp" flush = "true" /> 
    
@@ -18,7 +19,7 @@
 	         <div class="col-md-6"></div>	           
          </div>
       <form role="form" name="f" id="product-create-form" action="<c:url value='/dashboard/products/create'></c:url>" method="POST" enctype="multipart/form-data">
-         <div class="row">
+           <div class="row">
               <div class="col-md-6">	                    
 				  <div class="form-group">
 				    <label for="product-title">Product Title:</label>
@@ -68,7 +69,7 @@
          </div>
          <div class="row">               
 	         <div class="col-md-4 col-md-offset-4">
-	             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	             <sec:csrfInput />
 	             <input type="submit" class="btn btn-success btn-block btn-lg" value="Create Product" />
 	         </div>	           
          </div>
@@ -77,7 +78,7 @@
     <!-- /.content -->
 <jsp:include page = "../../footer.jsp" flush = "true" />  
 
-<script type="text/javascript">
+<script>
 <!-- -->
   $(document).ready(function(){
 	
@@ -88,11 +89,9 @@
 		    url  = $(this).attr('action');
 		postData(data,url);
 		
-		e.preventDefault();
-	});
-	
+		return false;
+	});	
 	function postData(data, url){
-		
 		$.ajax({
 			method:'POST',
 			url:url,

@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.jerotoma.dao.UserDao;
-import com.jerotoma.model.User;
+import com.jerotoma.model.users.User;
 import com.jerotoma.services.UserService;
 
 @Service

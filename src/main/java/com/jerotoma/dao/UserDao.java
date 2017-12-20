@@ -2,7 +2,7 @@ package com.jerotoma.dao;
 
 import java.util.List;
 
-import com.jerotoma.model.User;
+import com.jerotoma.model.users.User;
 
 public interface UserDao {
 	
