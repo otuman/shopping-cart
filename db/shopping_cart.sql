@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2017 at 09:36 PM
+-- Generation Time: Dec 20, 2017 at 10:26 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -98,9 +98,18 @@ CREATE TABLE `products` (
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `price` float NOT NULL,
   `quantity` int(11) NOT NULL,
-  `date_created` datetime NOT NULL,
+  `created_on` datetime NOT NULL,
   `updated_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `created_on`, `updated_on`) VALUES
+(1, 'Test', 'Thank you so much', 45, 2, '2017-12-20 16:22:14', '2017-12-20 16:22:14'),
+(2, 'Test', 'Thank you so much', 45, 2, '2017-12-20 16:23:12', '2017-12-20 16:23:12'),
+(3, 'Test', 'Thank you so much', 45, 2, '2017-12-20 16:23:20', '2017-12-20 16:23:20');
 
 -- --------------------------------------------------------
 
@@ -183,6 +192,12 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -204,6 +219,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roles`
