@@ -8,11 +8,15 @@
     reserved.
   </footer>
 
-
+<!-- jQuery Core 1.11.2-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<%=request.getContextPath()%>/resources/vendors/jquery-ui/jquery-ui.min.js"></script>
+<!-- jQuery Validation-->
+<script src="<%=request.getContextPath()%>/resources/vendors/jquery-validation/jquery.validate.min.js"></script>
+<!-- bootstrap js-->
 <script src="<%=request.getContextPath()%>/resources/vendors/bootstrap/js/bootstrap.min.js"></script>
+
 <!-- jvectormap -->
 <script src="<%=request.getContextPath()%>/resources/vendors/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>

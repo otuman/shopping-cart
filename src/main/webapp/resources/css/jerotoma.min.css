@@ -1,6 +1,14 @@
 body {
 	background: #eee !important;	
 }
+.field-required,
+.error{
+	color:#ff0000;
+}
+.field-required{
+	position:relative;
+	bottom:20;
+}
 
 .profile-img {
 	width: 96px;

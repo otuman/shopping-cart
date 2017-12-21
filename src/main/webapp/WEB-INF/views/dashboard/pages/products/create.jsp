@@ -22,26 +22,26 @@
            <div class="row">
               <div class="col-md-6">	                    
 				  <div class="form-group">
-				    <label for="product-title">Product Title:</label>
-				    <input type="text" name="product_title" class="form-control" id="product-title">
+				    <label for="product-title">Product Title: <span class="field-required">*</span></label>
+				    <input type="text" name="product_title" class="form-control" id="product-title" required>
 				  </div>
 				  <div class="form-group">
-				    <label for="product-price">Product Price:</label>
-				    <input type="text" name="product_price" class="form-control" id="product-price">
+				    <label for="product-price">Product Price: <span class="field-required">*</span></label>
+				    <input type="text" name="product_price" class="form-control" id="product-price" required >
 				  </div>
 				  <div class="form-group">
-				    <label for="product-quantity">Product Quantity:</label>
-				    <input type="number" name="product_quantity" class="form-control" id="product-quantity">
+				    <label for="product-quantity">Product Quantity: <span class="field-required">*</span></label>
+				    <input type="number" name="product_quantity" class="form-control" id="product-quantity" required>
 				  </div>
 				  <div class="form-group">
-					  <label for="product-description">Product Description:</label>
-					  <textarea class="form-control" name="product_description" rows="5" id="product-description"></textarea>
+					  <label for="product-description">Product Description: <span class="field-required">*</span></label>
+					  <textarea class="form-control" name="product_description" rows="5" id="product-description" required></textarea>
 				</div>				 				
               </div>
               <div class="col-md-6">
                   <div class="form-group">
-				    <label for="product-categories">Product Category(s):</label>
-				    <select multiple class="form-control" name="product_categories" id="product-categories">
+				    <label for="product-categories">Product Category(s): <span class="field-required">*</span></label>
+				    <select multiple class="form-control" name="product_categories" id="product-categories" required>
 					    <option>1</option>
 					    <option>2</option>
 					    <option>3</option>
@@ -49,8 +49,8 @@
 					</select>
 				  </div>
 				   <div class="form-group">
-				    <label for="product-attributes">Product Attribute(s):</label>
-				    <select multiple class="form-control" name="product_attributes" id="product-attributes">
+				    <label for="product-attributes">Product Attribute(s): <span class="field-required">*</span></label>
+				    <select multiple class="form-control" name="product_attributes" id="product-attributes" required>
 					    <option>1</option>
 					    <option>2</option>
 					    <option>3</option>
@@ -58,11 +58,11 @@
 					</select>
 				  </div>
 				   <div class="form-group">
-				    <label for="product-image">Product Image:</label>
+				    <label for="product-image">Product Image:<span class="field-required">*</span></label>
 				    <input type="file" name="product_image" class="form-control" id="product-image">
 				  </div>
 				  <div class="form-group">
-				    <label for="product-image">Product Gallery:</label>
+				    <label for="product-image">Product Gallery:</span></label>
 				    <input type="file"  multiple name="product_image" class="form-control" id="product-image">
 				  </div>
               </div>	           
@@ -81,9 +81,9 @@
 <script>
 <!-- -->
   $(document).ready(function(){
-	
-		
-	$('#product-create-form').on('submit', function(e){
+	var createForm = $('#product-create-form');
+	createForm.validate();	
+	createForm.on('submit', function(e){
 		 
 		var data = $(this).serializeArray(),
 		    url  = $(this).attr('action');
