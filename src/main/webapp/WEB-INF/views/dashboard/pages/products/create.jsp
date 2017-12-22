@@ -73,7 +73,7 @@
           </div>
          <div class="row">               
 	         <div class="col-md-4 col-md-offset-4">
-	             <sec:csrfInput />
+	             <input id="csrf-token-parameter" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	             <input type="submit" class="btn btn-success btn-block btn-lg" value="Create Product" />
 	         </div>	           
          </div>
@@ -87,6 +87,8 @@
   $(document).ready(function(){
 	
 	  var createForm = $('#product-create-form');
+	  var csrfToken  = $('#csrf-token-parameter');
+	  
 	  $("div.alert.alert-warning").hide();
 	
 	createForm.validate({
@@ -105,9 +107,12 @@
 		    }
 		},
 		submitHandler: function(form) {
-			var data = createForm.serializeArray();
-			var formData = new FormData($('#product-create-form')[0]);
-		    url  = createForm.attr('action');
+			//var data = createForm.serializeArray();
+			
+			
+			var formData = new FormData(createForm);
+			formData.append(csrfToken.attr('name'),csrfToken.attr('value'))
+			var url  = createForm.attr('action');
 			postData(formData, url);
 			//createForm.resetForm();
 		  
