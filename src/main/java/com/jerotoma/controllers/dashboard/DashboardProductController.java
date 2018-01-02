@@ -2,16 +2,20 @@ package com.jerotoma.controllers.dashboard;
 
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jerotoma.helpers.FileUploadController;
 import com.jerotoma.model.products.Product;
 import com.jerotoma.model.users.User;
 import com.jerotoma.services.ProductService;
@@ -55,11 +59,19 @@ public class DashboardProductController {
 		
 	}
 	@RequestMapping(value="/create",method=RequestMethod.POST)
-	public @ResponseBody Map<String,Object> postCreate(@RequestParam Map<String, String> params, MultipartFile file) {
+	public @ResponseBody Map<String,Object> postCreate(@RequestParam Map<String, String> params, MultipartHttpServletRequest request) {
 		Map<String,Object> map =  new HashMap<String, Object>();
 		Product product  = new Product(params); 
-		System.out.println(file);
-		productService.save(product);
+		//Iterator<String> itr =  request.getFileNames();		 
+        //MultipartFile file = request.getFile(itr.next());
+       
+      // FileUploadController uploadFile = FileUploadController.getInstance();
+       //uploadFile.uploadFileHandler(file.getOriginalFilename(), file);
+       
+      // System.out.println(file.getOriginalFilename() +" uploaded!");
+	   //System.out.println(file);
+	   System.out.println(params);
+	   productService.save(product);
 		
 		map.put("products", productService.getProducts());
 		map.put("status", 200);

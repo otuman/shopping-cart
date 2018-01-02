@@ -7,6 +7,7 @@
                          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                          http://www.springframework.org/schema/security
                          http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+     
      <http auto-config="true" use-expressions="true">
          <intercept-url pattern="/dashboard/**" access="hasRole('ROLE_USER')" />
          <form-login login-page="/myaccount/login" default-target-url="/dashboard"  authentication-failure-url="/myaccount/loginfailed" />
@@ -26,12 +27,10 @@
      <authentication-manager>
            <authentication-provider>
                 <jdbc-user-service
-                      data-source-ref="dataSource"
-                      authorities-by-username-query="select users.username, roles.name from users,roles where roles.id = users.role_id and users.username=? "
-                      users-by-username-query="select username, password,enabled, first_name,last_name, created_on, updated_on from users where username=?"
-                     
-                />
-                   
+                    data-source-ref="dataSource"
+                    authorities-by-username-query="select users.username, roles.name from users,roles where roles.id = users.role_id and users.username=? "
+                    users-by-username-query="select username, password,enabled, first_name,last_name, created_on, updated_on from users where username=?"
+                  />                   
            </authentication-provider>    
      </authentication-manager>
 </beans:beans>

@@ -15,7 +15,7 @@
     </section>   
     <!-- Main content -->
     <section class="content">
-          <form role="form" name="f" id="product-create-form" action="<c:url value='/dashboard/products/create'></c:url>" method="POST" enctype="multipart/form-data">
+          <form role="form" name="f" id="product-create-form" action="<c:url value='/dashboard/products/create?${_csrf.parameterName}=${_csrf.token}'></c:url>" method="POST" enctype="multipart/form-data">
           <div class="row">
              <div class="col-md-6">	                    
 			  <div class="form-group">
@@ -60,7 +60,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="product-image">Product Gallery:</span></label>
-			    <input type="file"  multiple name="product_image" class="form-control" id="product-image">
+			    <input type="file"  multiple name="product_gallery" class="form-control" id="product-gallery">
 			  </div>
              </div>	           
          </div>
@@ -73,7 +73,6 @@
           </div>
          <div class="row">               
 	         <div class="col-md-4 col-md-offset-4">
-	             <input id="csrf-token-parameter" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	             <input type="submit" class="btn btn-success btn-block btn-lg" value="Create Product" />
 	         </div>	           
          </div>
@@ -107,11 +106,8 @@
 		    }
 		},
 		submitHandler: function(form) {
-			//var data = createForm.serializeArray();
-			
-			
-			var formData = new FormData(createForm);
-			formData.append(csrfToken.attr('name'),csrfToken.attr('value'))
+			//var formData = createForm.serializeArray();
+			var formData = new FormData(createForm[0]);
 			var url  = createForm.attr('action');
 			postData(formData, url);
 			//createForm.resetForm();
@@ -124,11 +120,13 @@
 		console.log(data);
 		
 		$.ajax({
-			method:'POST',
-			url:url,
-			data:data,
-			contentType : false,
-	        processData : false,
+			url: url,                  // Url to which the request is send
+			type: "POST",             // Type of request to be send, called as method
+			contentType: false,       // The content type used when sending data to the server.
+			cache: false,             // To unable request pages to be cached
+			processData:false,        // To send DOMDocument or non processed data file it is set to false
+			enctype: 'multipart/form-data',
+			data: data,               // Data sent to server, a set of key/value pairs (i.e. form fields and values)
 			success:function(response){
 				console.log(response);
 			},

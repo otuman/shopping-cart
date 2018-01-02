@@ -28,12 +28,21 @@
 	         /WEB-INF/applicationContext.xml
 	 </param-value>
    </context-param>	
-   
+   <!--Spring Security Configuration part  --> 
+   <filter>
+	<filter-name>MultipartFilter</filter-name>
+	<filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+  </filter>
+     
     <!--Spring Security Configuration part  --> 
 	<filter>
 	     <filter-name>springSecurityFilterChain</filter-name>
 	     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>	
 	</filter> 
+    <filter-mapping>
+	  <filter-name>MultipartFilter</filter-name>
+	  <url-pattern>/*</url-pattern>
+   </filter-mapping>
 	<filter-mapping>
 	    <filter-name>springSecurityFilterChain</filter-name>
 	    <url-pattern>/*</url-pattern>

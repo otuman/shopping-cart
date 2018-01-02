@@ -15,10 +15,17 @@ public class FileUploadController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(FileUploadController.class);
 	
+	private static FileUploadController fileUploadeController;
+	
 	public FileUploadController(){
 		
 	}
 	
+	public static FileUploadController getInstance() {
+		if(fileUploadeController == null)
+			fileUploadeController = new FileUploadController();
+	  return fileUploadeController;		
+	}
 	
 	public String uploadMultipleFileHandler(String[] names, MultipartFile[] files) {
 
