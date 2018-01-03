@@ -1,4 +1,4 @@
-package com.jerotoma.model.products;
+package com.jerotoma.model;
 
 import java.io.Serializable;
 import java.util.Date;

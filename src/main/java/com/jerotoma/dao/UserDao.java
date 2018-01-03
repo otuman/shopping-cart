@@ -2,7 +2,7 @@ package com.jerotoma.dao;
 
 import java.util.List;
 
-import com.jerotoma.model.users.User;
+import com.jerotoma.model.User;
 
 public interface UserDao {
 	
@@ -10,7 +10,7 @@ public interface UserDao {
 	public User getCurrentUser(int id);
 	public User getCurrentUser(String username);
 	public boolean delete(User user);
-	public boolean save(User user);
-	public boolean update(User user);
+	public int save(User user);
+	public int update(User user);
 
 }

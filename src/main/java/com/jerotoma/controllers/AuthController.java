@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jerotoma.model.users.User;
+import com.jerotoma.model.User;
 import com.jerotoma.services.UserService;
 
 

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jerotoma.dao.ProductDao;
-import com.jerotoma.model.products.Product;
+import com.jerotoma.model.Product;
 import com.jerotoma.services.ProductService;
 
 
@@ -37,7 +37,7 @@ public class ProductServiceImplementation implements ProductService {
 		return productDao.update(product);
 	}
 
-	public boolean save(Product product){
+	public int save(Product product){
 		// TODO Auto-generated method stub
 		return productDao.save(product);
 	}

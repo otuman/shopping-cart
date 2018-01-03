@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.jerotoma.dao.UserDao;
-import com.jerotoma.model.users.User;
+import com.jerotoma.model.User;
 import com.jerotoma.services.UserService;
 
 @Service
@@ -27,12 +27,12 @@ public class UserServiceImplementation implements UserService {
 		return useDao.delete(user);
 	}
 
-	public boolean save(User user) {
+	public int save(User user) {
 		// TODO Auto-generated method stub
 		return useDao.save(user);
 	}
 
-	public boolean update(User user) {
+	public int update(User user) {
 		// TODO Auto-generated method stub
 		return useDao.update(user);
 	}

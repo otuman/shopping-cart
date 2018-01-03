@@ -4,8 +4,13 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,8 +21,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jerotoma.helpers.FileUploadController;
-import com.jerotoma.model.products.Product;
-import com.jerotoma.model.users.User;
+import com.jerotoma.model.Media;
+import com.jerotoma.model.Product;
+import com.jerotoma.model.User;
+import com.jerotoma.services.MediaService;
 import com.jerotoma.services.ProductService;
 import com.jerotoma.services.UserService;
 
@@ -27,6 +34,12 @@ public class DashboardProductController {
 		
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	MediaService mediaService;
+	
+	@Autowired
+	ServletContext context;
 	
 	@Autowired
 	ProductService productService;
@@ -58,24 +71,30 @@ public class DashboardProductController {
 		return view;
 		
 	}
-	@RequestMapping(value="/create",method=RequestMethod.POST)
-	public @ResponseBody Map<String,Object> postCreate(@RequestParam Map<String, String> params, MultipartHttpServletRequest request) {
+	@PostMapping(value="/create")
+	public @ResponseBody Map<String,Object> postCreate(@RequestParam Map<String, String> params, @RequestParam("product_image") MultipartFile file) {
 		Map<String,Object> map =  new HashMap<String, Object>();
 		Product product  = new Product(params); 
-		//Iterator<String> itr =  request.getFileNames();		 
-        //MultipartFile file = request.getFile(itr.next());
-       
-      // FileUploadController uploadFile = FileUploadController.getInstance();
-       //uploadFile.uploadFileHandler(file.getOriginalFilename(), file);
-       
-      // System.out.println(file.getOriginalFilename() +" uploaded!");
-	   //System.out.println(file);
-	   System.out.println(params);
-	   productService.save(product);
 		
-		map.put("products", productService.getProducts());
-		map.put("status", 200);
-		map.put("message", "Data found");
+       FileUploadController uploadFile = FileUploadController.getInstance();
+       Map<String, Object>  servedFile = uploadFile.uploadFileHandler(file.getOriginalFilename(), file, context, "products");
+       boolean success = (Boolean) (null == servedFile.get("success") ? false : servedFile.get("success")) ;
+       if(success) {
+    	  
+    	   Media media = (Media)servedFile.get("media");    	   
+    	   mediaService.save(media);
+    	   productService.save(product);
+    	map.put("media", servedFile.get("media"));
+   		map.put("products", productService.getProducts());
+   		map.put("status", 200);
+   		map.put("message", "Data found");
+   				
+   		return map;
+    	   
+    	   
+       }       
+		map.put("status", 401);
+		map.put("message", "Data not found");
 				
 		return map;
 	}

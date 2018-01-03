@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2017 at 09:36 PM
+-- Generation Time: Jan 03, 2018 at 10:22 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -83,8 +83,17 @@ CREATE TABLE `media` (
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `src` text COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `absolutePath` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `size` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `media`
+--
+
+INSERT INTO `media` (`id`, `title`, `description`, `src`, `type`, `absolutePath`, `size`) VALUES
+(1, 'dashboard.PNG', '', '/shopping-cart/resources/uploads/dashboard.PNG', 'image/png', 'C:\\Projects\\java\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping-cart\\resources\\uploads\\products\\dashboard.PNG', 43117);
 
 -- --------------------------------------------------------
 
@@ -98,9 +107,23 @@ CREATE TABLE `products` (
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `price` float NOT NULL,
   `quantity` int(11) NOT NULL,
-  `date_created` datetime NOT NULL,
+  `created_on` datetime NOT NULL,
   `updated_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `created_on`, `updated_on`) VALUES
+(1, 'Big Orange', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', 233, 2, '2018-01-03 14:03:29', '2018-01-03 14:03:29'),
+(2, 'Big Orange', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', 233, 2, '2018-01-03 14:05:49', '2018-01-03 14:05:49'),
+(3, 'Big Orange', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', 233, 2, '2018-01-03 14:06:00', '2018-01-03 14:06:00'),
+(4, 'Lorem Ipsum', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', 67, 7, '2018-01-03 14:58:11', '2018-01-03 14:58:11'),
+(5, 'Lorem Ipsum', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', 67, 7, '2018-01-03 15:04:15', '2018-01-03 15:04:15'),
+(6, 'Lorem Ipsum', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', 67, 7, '2018-01-03 15:06:01', '2018-01-03 15:06:01'),
+(7, 'Lorem Ipsum', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', 67, 7, '2018-01-03 15:23:07', '2018-01-03 15:23:07'),
+(8, 'A long integer is a data type in computer sc', 'A long integer is a data type in computer science whose range is greater (sometimes even double) than that of the standard data type integer. Depending on the programming language and the computer machine processor, the size of the long integer will vary. ', 34, 45, '2018-01-03 16:08:34', '2018-01-03 16:08:34');
 
 -- --------------------------------------------------------
 
@@ -183,6 +206,18 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indexes for table `media`
+--
+ALTER TABLE `media`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -204,6 +239,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `media`
+--
+ALTER TABLE `media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roles`

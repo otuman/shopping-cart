@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jerotoma.dao.UserDao;
-import com.jerotoma.model.users.User;
+import com.jerotoma.model.User;
 
 @Repository
 @Transactional
@@ -33,17 +33,17 @@ public class UserDaoImplementation implements UserDao{
 		return true;
 	}
 
-	public boolean save(User user) {
+	public int save(User user) {
 		// TODO Auto-generated method stub
 		
 		session.getCurrentSession().save(user);
-		return true;
+		return user.getId();
 	}
 
-	public boolean update(User user) {
+	public int update(User user) {
 		// TODO Auto-generated method stub
 		session.getCurrentSession().update(user);
-		return true;
+		return user.getId();
 	}
 
 	public User getCurrentUser(int id) {

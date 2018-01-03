@@ -1,22 +1,32 @@
 package com.jerotoma.helpers;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.jerotoma.model.Media;
 
 
 
 public class FileUploadController {
 	
-	private static final Logger logger = LoggerFactory
-			.getLogger(FileUploadController.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(FileUploadController.class);
 	private static FileUploadController fileUploadeController;
 	
+	private String resourcePath = "/resources/uploads";
+    
 	public FileUploadController(){
 		
 	}
@@ -27,7 +37,71 @@ public class FileUploadController {
 	  return fileUploadeController;		
 	}
 	
-	public String uploadMultipleFileHandler(String[] names, MultipartFile[] files) {
+	
+	public Map<String, Object> uploadFileHandler(String name,MultipartFile file, ServletContext context,String folderName) {
+		Map<String, Object>  map = new HashMap<String, Object>();
+		String message;
+		
+		
+		
+		if (!file.isEmpty()) {
+						
+			try {
+				byte[] bytes = file.getBytes();
+			
+				BufferedImage mBufferedImage = Media.processFile(bytes);
+				
+				// Creating the directory to store file
+				String rootPath = context.getRealPath(resourcePath); 
+							
+				File dir = new File(rootPath + File.separator + folderName);
+				if (!dir.exists())
+					dir.mkdirs();
+              
+				// Create the file on server
+				File serverFile = new File(dir.getAbsolutePath() + File.separator + name);
+				BufferedOutputStream stream = new BufferedOutputStream(
+						new FileOutputStream(serverFile));
+				stream.write(bytes);
+				stream.close();
+
+				logger.info("Server File Location="	+ serverFile.getAbsolutePath());
+				
+				Media media = new Media();
+				media.setTitle(name);
+				media.setType(file.getContentType());
+				media.setAbsolutPath(serverFile.getAbsolutePath());
+				media.setSize(file.getSize());
+				media.setSrc(context.getContextPath()+ resourcePath +"/"+ name);
+				media.setDescription("");
+				message = "You successfully uploaded file=" + serverFile.getAbsolutePath();
+				
+				
+				map.put("media", media);
+				map.put("success", true);
+				map.put("message", message);
+				
+				System.out.println("The context : "+ context.getContextPath()+ resourcePath +"/"+ name);
+				
+				return map; 
+			} catch (Exception e) {
+				message = "You failed to upload " + name + " => " + e.getMessage();
+				map.put("success", false);
+				map.put("message", message);
+				
+				return map;
+			}
+		} else {
+			
+			message = "You failed to upload " + name + " because the file was empty.";
+			map.put("success", false);
+			map.put("message", message);
+			
+			return map; 
+		}
+	}
+	
+	public String uploadMultipleFileHandler(String[] names, MultipartFile[] files, ServletContext context, String folderName) {
 
 		if (files.length != names.length)
 			return "Mandatory information missing";
@@ -40,8 +114,8 @@ public class FileUploadController {
 				byte[] bytes = file.getBytes();
 
 				// Creating the directory to store file
-				String rootPath = System.getProperty("catalina.home");
-				File dir = new File(rootPath + File.separator + "tmpFiles");
+				String rootPath = context.getRealPath("/resources/uploads"); //this.getClass().getResource("/uploads");    //System.getProperty("catalina.home");
+				File dir = new File(rootPath + File.separator + folderName);
 				if (!dir.exists())
 					dir.mkdirs();
 
@@ -65,36 +139,4 @@ public class FileUploadController {
 		return message;
 	}
 	
-	public String uploadFileHandler(String name,MultipartFile file) {
-
-		if (!file.isEmpty()) {
-			try {
-				byte[] bytes = file.getBytes();
-
-				// Creating the directory to store file
-				String rootPath = System.getProperty("catalina.home");
-				File dir = new File(rootPath + File.separator + "tmpFiles");
-				if (!dir.exists())
-					dir.mkdirs();
-
-				// Create the file on server
-				File serverFile = new File(dir.getAbsolutePath()
-						+ File.separator + name);
-				BufferedOutputStream stream = new BufferedOutputStream(
-						new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
-
-				logger.info("Server File Location="
-						+ serverFile.getAbsolutePath());
-
-				return "You successfully uploaded file=" + name;
-			} catch (Exception e) {
-				return "You failed to upload " + name + " => " + e.getMessage();
-			}
-		} else {
-			return "You failed to upload " + name
-					+ " because the file was empty.";
-		}
-	}
 }

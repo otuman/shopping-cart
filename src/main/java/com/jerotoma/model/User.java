@@ -1,4 +1,4 @@
-package com.jerotoma.model.users;
+package com.jerotoma.model;
 
 import java.io.Serializable;
 

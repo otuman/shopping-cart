@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.jerotoma.dao.ProductDao;
-import com.jerotoma.model.products.Product;
-import com.jerotoma.model.users.User;
+import com.jerotoma.model.Product;
+import com.jerotoma.model.User;
 
 @Repository
 @Transactional
@@ -41,10 +41,10 @@ public class ProductDaoImplementation implements ProductDao {
 		return getProduct(product.getId());
 	}
 
-	public boolean save(Product product) {
+	public int save(Product product) {
 		// TODO Auto-generated method stub
 		session.getCurrentSession().save(product);
-		return true;
+		return product.getId();
 	}
 
 	public boolean delete(Product product) {
