@@ -72,7 +72,7 @@ public class FileUploadController {
 				media.setType(file.getContentType());
 				media.setAbsolutPath(serverFile.getAbsolutePath());
 				media.setSize(file.getSize());
-				media.setSrc(context.getContextPath()+ resourcePath +"/"+ name);
+				media.setSrc(context.getContextPath()+ resourcePath +"/"+folderName+"/"+name);
 				media.setDescription("");
 				message = "You successfully uploaded file=" + serverFile.getAbsolutePath();
 				
@@ -81,7 +81,7 @@ public class FileUploadController {
 				map.put("success", true);
 				map.put("message", message);
 				
-				System.out.println("The context : "+ context.getContextPath()+ resourcePath +"/"+ name);
+				System.out.println("The context : "+ media.getSrc());
 				
 				return map; 
 			} catch (Exception e) {

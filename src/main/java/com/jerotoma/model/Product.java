@@ -2,19 +2,28 @@ package com.jerotoma.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="products")
 public class Product implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
@@ -38,6 +47,12 @@ public class Product implements Serializable {
 	
 	@Column(name="updated_on")
 	private Date updatedOn;
+	
+	@OneToMany(mappedBy="product")
+	private List<ProductMedia> productMedia;
+	
+	@Transient
+	private  List<Media> mediaList;
 
 	public Product(){
 		
@@ -53,92 +68,74 @@ public class Product implements Serializable {
 		this.updatedOn  = new Date();
 		
 	}
-
-
-
 	public int getId() {
 		return id;
 	}
-
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
-
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
 	public String getDescription() {
 		return description;
 	}
-
-
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
-
 	public float getPrice() {
 		return price;
 	}
-
-
-
 	public void setPrice(float price) {
 		this.price = price;
 	}
-
-
-
 	public int getQuantity() {
 		return quantity;
 	}
-
-
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-
-
 	public Date getCreatedOn() {
 		return createdOn;
 	}
-
-
 
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 
-
-
 	public Date getUpdatedOn() {
 		return updatedOn;
 	}
-
-
 
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
 	
+	public void setProductMedia(List<ProductMedia> productMedia) {
+		// TODO Auto-generated method stub
+		this.productMedia = productMedia;
+
+	}
 	
+	public List<ProductMedia> getProductMedia(){
+		return productMedia;
+	}
+
+
+	public List<Media> getMediaList() {
+		return mediaList;
+	}
+
+
+	public void setMediaList(List<Media> mediaList) {
+		this.mediaList = mediaList;
+	}
 	
 	
 	

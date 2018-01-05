@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jerotoma.dao.MediaDao;
 import com.jerotoma.model.Media;
-import com.jerotoma.model.Product;
 
 @Repository
 @Transactional
