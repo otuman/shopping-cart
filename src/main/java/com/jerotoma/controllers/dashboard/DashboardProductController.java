@@ -3,21 +3,10 @@ package com.jerotoma.controllers.dashboard;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.jerotoma.helpers.FileUploadController;
 import com.jerotoma.model.Media;
@@ -28,6 +17,16 @@ import com.jerotoma.services.MediaService;
 import com.jerotoma.services.ProductMediaService;
 import com.jerotoma.services.ProductService;
 import com.jerotoma.services.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/dashboard/products")
@@ -87,7 +86,7 @@ public class DashboardProductController {
     	  
     	   Media media = (Media)servedFile.get("media");    	   
     	   int mediaID   = mediaService.save(media);
-    	   int productID = productService.save(product);
+    	   productService.save(product);
     	  
        //Initialize ProductMedia Object, and set product media ids
     	   ProductMedia productMedia = new ProductMedia();

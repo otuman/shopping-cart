@@ -1,22 +1,18 @@
 package com.jerotoma.helpers;
 
-import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 
+import com.jerotoma.model.Media;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.jerotoma.model.Media;
 
 
 
@@ -49,7 +45,7 @@ public class FileUploadController {
 			try {
 				byte[] bytes = file.getBytes();
 			
-				BufferedImage mBufferedImage = Media.processFile(bytes);
+				//BufferedImage mBufferedImage = Media.processFile(bytes);
 				
 				// Creating the directory to store file
 				String rootPath = context.getRealPath(resourcePath); 

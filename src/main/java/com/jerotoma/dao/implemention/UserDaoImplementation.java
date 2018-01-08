@@ -16,7 +16,7 @@ public class UserDaoImplementation implements UserDao{
 	
 	@Autowired
 	SessionFactory session;
-
+	@SuppressWarnings("unchecked")
 	public List<User> users() {
 		return session.getCurrentSession().createQuery("from User").list();
 	}
@@ -49,6 +49,7 @@ public class UserDaoImplementation implements UserDao{
 	public User getCurrentUser(int id) {
 		// TODO Auto-generated method stub
 		User user = null;
+		@SuppressWarnings("unchecked")
 		List<User> users = session.getCurrentSession().createQuery("from User where id='"+id+"'").list();
 		if(!users.isEmpty() && users.size() == 1) {
 			for(User u : users) {
@@ -57,7 +58,7 @@ public class UserDaoImplementation implements UserDao{
 		}
 		return user;
 	}
-	
+	@SuppressWarnings("unchecked")
 	public User getCurrentUser(String username) {
 		// TODO Auto-generated method stub
 		

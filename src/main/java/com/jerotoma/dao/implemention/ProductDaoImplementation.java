@@ -2,13 +2,13 @@ package com.jerotoma.dao.implemention;
 
 import java.util.List;
 
+import com.jerotoma.dao.ProductDao;
+import com.jerotoma.model.Product;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import com.jerotoma.dao.ProductDao;
-import com.jerotoma.model.Product;
-import com.jerotoma.model.User;
 
 @Repository
 @Transactional
@@ -16,7 +16,7 @@ public class ProductDaoImplementation implements ProductDao {
 
 	@Autowired
 	SessionFactory session;
-	
+	@SuppressWarnings("unchecked")
 	public Product getProduct(int id) {
 		// TODO Auto-generated method stub
 	    Product product = null;
