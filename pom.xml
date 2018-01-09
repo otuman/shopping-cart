@@ -5,11 +5,10 @@
   <artifactId>shopping-cart</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>ShoppingCart Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
-       <maven.compiler.source>1.6</maven.compiler.source>
-       <maven.compiler.target>1.6</maven.compiler.target>
+       <maven.compiler.source>1.8</maven.compiler.source>
+       <maven.compiler.target>1.8</maven.compiler.target>
        <java-version>1.8</java-version>
        <org.springframework-version>4.3.13.RELEASE</org.springframework-version>
   </properties>
@@ -109,26 +108,29 @@
 	<dependency>
 	    <groupId>org.springframework.security</groupId>
 	    <artifactId>spring-security-core</artifactId>
-	    <version>4.2.3.RELEASE</version>
-	</dependency>
-	    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+	    <version>5.0.0.RELEASE</version>
+	</dependency>	 
+	<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 	<dependency>
 	    <groupId>org.springframework.security</groupId>
 	    <artifactId>spring-security-web</artifactId>
-	    <version>4.2.1.RELEASE</version>
+	    <version>5.0.0.RELEASE</version>
 	</dependency>
-	    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+
+	 <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
 	<dependency>
 	    <groupId>org.springframework.security</groupId>
 	    <artifactId>spring-security-config</artifactId>
-	    <version>4.2.1.RELEASE</version>
+	    <version>5.0.0.RELEASE</version>
 	</dependency>
-	 <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+
+	<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
 	<dependency>
 	    <groupId>org.springframework.security</groupId>
 	    <artifactId>spring-security-taglibs</artifactId>
-	    <version>4.2.1.RELEASE</version>
+	    <version>5.0.0.RELEASE</version>
 	</dependency>
+
  
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 	<dependency>
@@ -227,6 +229,17 @@
 	</dependency>     
   </dependencies>
   <build>
-    <finalName>ShoppingCart</finalName>
+    <finalName>shopping-cart</finalName>
+	<plugins>
+		<plugin>
+				<groupId>com.jerotoma.shoppingcart</groupId>
+				<artifactId>shopping-cart</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<configuration>
+				<mainClass>com.jerotoma.shoppingcart</mainClass>
+			</configuration>
+		</plugin>
+	</plugins>
   </build>
+  <name>shopping-cart</name>
 </project>

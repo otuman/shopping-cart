@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +37,8 @@ public class UserDaoImplementation implements UserDao{
 
 	public int save(User user) {
 		// TODO Auto-generated method stub
+		//PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		//user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		session.getCurrentSession().save(user);
 		return user.getId();
