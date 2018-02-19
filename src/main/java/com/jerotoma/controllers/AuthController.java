@@ -1,6 +1,7 @@
 package com.jerotoma.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.jerotoma.model.User;
@@ -76,8 +77,8 @@ public class AuthController {
 //	
 	
 	@RequestMapping(value="/create",method=RequestMethod.POST)
-	public @ResponseBody Map<String,Object> postCreate(@RequestParam Map<String, String> params) {
-		Map<String,Object> map =  new HashMap<String, Object>();
+	public @ResponseBody Map<String,?> postCreate(@RequestParam Map<String, String> params) {
+		Map<String, Object> map =  new HashMap<String, Object>();
 		
 		System.out.println(params);
 		

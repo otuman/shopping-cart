@@ -37,8 +37,8 @@
 			    					</div>
 			    				</div>
 			    			</div>
-			    			
-			    			<input type="submit" value="Register" class="btn btn-info btn-block">
+			    			 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			    			 <input type="submit" value="Register" class="btn btn-info btn-block">
 			    		
 			    		</form>
 			    	</div>

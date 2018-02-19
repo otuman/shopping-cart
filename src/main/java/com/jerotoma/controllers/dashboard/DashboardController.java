@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 import com.jerotoma.model.User;
 import com.jerotoma.services.UserService;

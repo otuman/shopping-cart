@@ -9,7 +9,7 @@
                          http://www.springframework.org/schema/security/spring-security-4.2.xsd">
      
      <http auto-config="true" use-expressions="true">
-         <intercept-url pattern="/dashboard/**" access="hasRole('ROLE_USER')" />
+         <intercept-url pattern="/dashboard/**" access="authenticated" />
          <form-login login-page="/myaccount/login" default-target-url="/dashboard"  authentication-failure-url="/myaccount/loginfailed" />
          <logout logout-success-url="/myaccount/logout"      
 				 logout-url="/logout"
@@ -23,15 +23,14 @@
                 </user-service>
            </authentication-provider>    
      </authentication-manager> -->
-     
-     <authentication-manager>
-    
+     <beans:bean id="bcryptEncoder" name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+     <authentication-manager>    
            <authentication-provider>
-                <jdbc-user-service
-                
+                <password-encoder ref="bcryptEncoder"/>
+                <jdbc-user-service                
                     data-source-ref="dataSource"
                     authorities-by-username-query="select users.username, roles.name from users,roles where roles.id = users.role_id and users.username=? "
-                    users-by-username-query="select username, password,enabled, first_name,last_name, created_on, updated_on from users where username=?"
+                    users-by-username-query="select username, password,enabled from users where username=?"
                   />                   
            </authentication-provider>    
      </authentication-manager>

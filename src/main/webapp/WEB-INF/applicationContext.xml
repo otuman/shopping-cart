@@ -21,7 +21,7 @@
    <context:component-scan base-package="com.jerotoma" />
   
    <!-- Enable MVC Annotation-driven -->
-   <mvc:annotation-driven/>
+  <mvc:annotation-driven/>     
  
    <!-- Define resources directory location -->
    <mvc:resources mapping="/resources/**" location="/resources/" />
@@ -53,5 +53,6 @@
   <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
          <property name="sessionFactory" ref="sessionFactory"/>
   </bean>
+ 
   
 </beans>

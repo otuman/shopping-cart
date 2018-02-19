@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -20,7 +21,10 @@ public class UserDaoImplementation implements UserDao{
 	SessionFactory session;
 	@SuppressWarnings("unchecked")
 	public List<User> users() {
-		return session.getCurrentSession().createQuery("from User").list();
+		List<User> users  = (List<User>)session.getCurrentSession().createQuery("from User").list();
+		
+		
+		return users;
 	}
 
 	public boolean delete(User user) {
@@ -37,8 +41,8 @@ public class UserDaoImplementation implements UserDao{
 
 	public int save(User user) {
 		// TODO Auto-generated method stub
-		//PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		//user.setPassword(passwordEncoder.encode(user.getPassword()));
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();//PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		session.getCurrentSession().save(user);
 		return user.getId();

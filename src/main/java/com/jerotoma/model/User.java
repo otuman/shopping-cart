@@ -28,6 +28,11 @@ public class User implements Serializable {
 	@Column(name="role_id")
 	private int roleID;
 	
+	@Column(name = "enabled")
+	private boolean enabled;
+	
+	
+
 	@Column(name="username")
 	private String username;
 	
@@ -64,6 +69,8 @@ public class User implements Serializable {
 		this.lastName = params.get("last_name");
 		this.createdOn = new Date();
 		this.updatedOn = new Date();
+		this.enabled   = true;
+		this.roleID    = 1; 
 		
 		
 		//System.out.println(params);
@@ -131,6 +138,12 @@ public class User implements Serializable {
 	public void setRoleID(int roleID) {
 		this.roleID = roleID;
 	}
-	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 }
