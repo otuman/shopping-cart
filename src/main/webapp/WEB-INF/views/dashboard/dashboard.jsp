@@ -19,33 +19,12 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua"> 
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>New Orders</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+          <order-counter></order-counter>         
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>Bounce Rate</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+          <bounce-rate></bounce-rate>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -79,7 +58,8 @@
         </div>
         <!-- ./col -->
       </div>
-      <!-- /.row -->
+      <!-- /.row --> 
+       
       <!-- Main row -->
       <div class="row">
         <!-- Left col -->
@@ -99,7 +79,7 @@
             </div>
           </div>
           <!-- /.nav-tabs-custom -->
-
+         
           <!-- Chat box -->
           <div class="box box-success">
             <div class="box-header">
@@ -518,4 +498,5 @@
 
     </section>
     <!-- /.content -->
-<jsp:include page = "footer.jsp" flush = "true" />  
+<jsp:include page = "../footer-scripts.jsp" flush = "true" />  
+<jsp:include page = "../footer.jsp" flush = "true" />   

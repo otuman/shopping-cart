@@ -5,5 +5,6 @@
 		  <div class="panel-body">Panel Content</div>
 		</div>
     </div>
-<jsp:include page = "../../footer.jsp" flush = "true" /> 
+<jsp:include page = "../../footer-scripts.jsp" flush = "true" />  
+<jsp:include page = "../../footer.jsp" flush = "true" />  
    

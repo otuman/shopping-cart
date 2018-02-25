@@ -25,6 +25,8 @@ public class ProductDetail {
 	
 	private Date updatedOn;
 	
+	private List<ProductCategory> categories;
+	private List<ProductAttribute> attribute;
 	
 	private List<ProductMedia> productMedia;
 	

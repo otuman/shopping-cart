@@ -27,7 +27,7 @@
 	         /WEB-INF/applicationContext.xml
 	 </param-value>
    </context-param>	
-   <!--Spring Security Configuration part  --> 
+   <!--Spring MultipartFilter Configuration part  --> 
    <filter>
 	<filter-name>MultipartFilter</filter-name>
 	<filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>

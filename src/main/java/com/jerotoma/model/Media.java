@@ -26,25 +26,25 @@ public class Media implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
-	int id;
+	private int id;
 	
 	@Column(name="absolutePath")
-	String absolutPath;
+	private String absolutPath;
 	
 	@Column(name="title")
-	String title;
+	private String title;
 	
 	@Column(name="description")
-	String description;
+	private String description;
 	
 	@Column(name="src")
-	String src;
+	private String src;
 	
 	@Column(name="type")
-	String type;
+	private String type;
 	
 	@Column(name="size")
-	long size;
+	private long size;
 	
 	public Media() {
 		

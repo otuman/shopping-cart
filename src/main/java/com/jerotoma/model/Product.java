@@ -5,14 +5,21 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="products")
@@ -48,7 +55,21 @@ public class Product implements Serializable {
 	private Date updatedOn;
 	
 	@OneToMany(mappedBy="product")
+	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
 	private List<ProductMedia> productMedia;
+	
+	
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "product_categories", joinColumns=@JoinColumn(name="product_id", referencedColumnName="id"), inverseJoinColumns=@JoinColumn(name="product_category",referencedColumnName="id"))
+	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
+	private List<ProductCategory> productCategories;
+	
+	
+	@OneToMany(mappedBy="product")
+	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
+	private List<ProductAttribute> productAttributes;
+	
 	
 	@Transient
 	private  List<Media> mediaList;

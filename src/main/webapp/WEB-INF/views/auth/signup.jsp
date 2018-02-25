@@ -46,14 +46,14 @@
     		</div>
     	</div>
 	</div>
-<jsp:include page = "../footer.jsp" flush = "true" />  
+<jsp:include page = "../footer-scripts.jsp" flush = "true" />  
 <script>
      $(document).ready(function(){
     	 var form = $("#user-signup-form");
     	 form.on('submit', function(e){
     		 e.preventDefault();
     		var data = getFormData(form);
-    		console.log(data);
+    		//console.log(data);
     		$.ajax({
     			url: form.attr( 'action' ),
     			method:'POST',
@@ -85,3 +85,4 @@
 
 
 </script>
+<jsp:include page = "../footer.jsp" flush = "true" />  

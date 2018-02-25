@@ -25,16 +25,8 @@ public class MediaDaoImplementation implements MediaDao {
 	}
 
 	public Media getMedia(int id) {
-		// TODO Auto-generated method stub
-	    Media media = null;
-		@SuppressWarnings("unchecked")
-		List<Media>  mediaList = session.getCurrentSession().createQuery("from Media where id='"+id+"'").list();
-		if(!mediaList.isEmpty() && mediaList.size() == 1) {
-			for(Media m : mediaList) {
-				media = m;
-			}
-		}
-		return media;
+		
+		return (Media)session.getCurrentSession().get(Media.class, id);
 	}
 
 	public boolean delete(Media media) {

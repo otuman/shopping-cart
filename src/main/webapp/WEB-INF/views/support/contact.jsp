@@ -1,12 +1,11 @@
  <jsp:include page = "../header.jsp" flush = "true" /> 
-
       <div class="starter-template">
-        <h1>Contact Us</h1> <%=request.getContextPath()%>
+        <h1>Contact Us</h1>
         <form class="form-horizontal">
 		<fieldset>
 		
 		<!-- Form Name -->
-		<legend>CATEGORY</legend>
+		<h3>CATEGORY</h3>
 		
 		<!-- Select Basic -->
 		<div class="form-group">
@@ -63,5 +62,7 @@
 		
 		</fieldset>
 		</form>
-<jsp:include page = "../footer.jsp" flush = "true" /> 
+      </div>
+<jsp:include page = "../footer-scripts.jsp" flush = "true" />  
+<jsp:include page = "../footer.jsp" flush = "true" />  
    

@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="product_media")
 public class ProductMedia implements Serializable {
@@ -30,6 +32,7 @@ public class ProductMedia implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="product_id", nullable=false)
+    @JsonBackReference
     private Product product;
     
     

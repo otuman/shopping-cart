@@ -7,21 +7,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <sec:csrfMetaTags/>
     <meta charset="utf-8">    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="${_csrf.token}"/>
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+	<!-- ... -->
     <title>Jerotoma | ${title}</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="${contextPath}resources/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${contextPath}resources/css/jerotoma.min.css" rel="stylesheet">   
+ <jsp:include page = "./header-styles.jsp" flush = "true" />  
+   
     
   </head>
   <body>
+    <div id="app">
 		<nav class="navbar navbar-default navbar-fixed-top">
 		      <div class="container">
 		        <div class="navbar-header">

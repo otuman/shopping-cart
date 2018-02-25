@@ -79,7 +79,8 @@
        </form>
     </section>
     <!-- /.content -->
-<jsp:include page = "../../footer.jsp" flush = "true" />  
+<jsp:include page = "../../../footer-scripts.jsp" flush = "true" />  
+   
 
 <script>
 <!-- -->
@@ -150,4 +151,5 @@
 
 
 </script>
+<jsp:include page = "../../../footer.jsp" flush = "true" />  
 

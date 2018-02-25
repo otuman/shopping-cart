@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.annotation.MultipartConfig;
 
 import com.jerotoma.helpers.FileUploadController;
 import com.jerotoma.model.Media;
@@ -29,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@MultipartConfig
 @RequestMapping("/dashboard/products")
 public class DashboardProductController {
 		
@@ -51,10 +53,11 @@ public class DashboardProductController {
 	public ModelAndView getIndexView(Principal principal) {
 		String username = principal.getName();
 		User user = userService.getCurrentUser(username);
-		
+		List<Product> products = productService.getProducts();
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("dashboard/pages/products/index");
+		view.addObject("products", products);
 		view.addObject("title", "Products");
 		view.addObject("user", user);
 		return view;
@@ -121,7 +124,7 @@ public class DashboardProductController {
     	  
     	
     	  
-    	 // map.put("productMedia", productMediaService.getProductMedia(productMediaID));
+    	  map.put("productMedia", productMediaService.getProductMedia(productMediaID));
     	  map.put("media", servedFile.get("media"));
    		  map.put("products", products);
    		  map.put("status", 200);
@@ -146,6 +149,28 @@ public class DashboardProductController {
 		view.addObject("title", "Product");
 		return view;
 		
+	}
+	
+	
+	@RequestMapping(value= {"/all"},method=RequestMethod.GET)
+	public @ResponseBody Map<String, ?> getAllProducts(){
+		Map<String, Object> map = new HashMap<>();
+		List<Product> products = productService.getProducts();
+		
+		for(Product p: products) {
+			
+			System.out.println( "Otoman "+ p.getProductMedia());
+		}
+		map.put("draw", 1);
+		map.put("recordsTotal", products.size());
+		map.put("recordsFiltered", products.size());
+		map.put("data", products);
+		
+		System.out.println(map);
+		
+		
+		
+		return map;
 	}
 	
 	
