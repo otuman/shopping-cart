@@ -12,6 +12,7 @@ import javax.servlet.annotation.MultipartConfig;
 import com.jerotoma.helpers.FileUploadController;
 import com.jerotoma.model.Media;
 import com.jerotoma.model.Product;
+import com.jerotoma.model.ProductDetail;
 import com.jerotoma.model.ProductMedia;
 import com.jerotoma.model.User;
 import com.jerotoma.services.MediaService;
@@ -56,7 +57,7 @@ public class DashboardProductController {
 		List<Product> products = productService.getProducts();
 		
 		ModelAndView view = new ModelAndView();
-		view.setViewName("dashboard/pages/products/index");
+		view.setViewName("dashboard/shop/products/index");
 		view.addObject("products", products);
 		view.addObject("title", "Products");
 		view.addObject("user", user);
@@ -71,7 +72,7 @@ public class DashboardProductController {
 		
 		
 		ModelAndView view = new ModelAndView();
-		view.setViewName("dashboard/pages/products/create");
+		view.setViewName("dashboard/shop/products/create");
 		view.addObject("title", "Products");
 		view.addObject("user", user);
 		return view;
@@ -91,10 +92,10 @@ public class DashboardProductController {
     	   int mediaID   = mediaService.save(media);
     	   productService.save(product);
     	  
-       //Initialize ProductMedia Object, and set product media ids
+       //Initialise ProductMedia Object, and set product media ids
     	   ProductMedia productMedia = new ProductMedia();
     	   productMedia.setProduct(product);
-    	   productMedia.setMediaId(mediaID);
+    	   productMedia.setMedia(media);
     	  
        //Save ProductMedia in the database
     	   @SuppressWarnings("unused")
@@ -106,7 +107,7 @@ public class DashboardProductController {
     	   for(Product p : productService.getProducts() ) {
     		  List<Media> mediaList  = new ArrayList<Media>();
     		  for(ProductMedia pm : p.getProductMedia()){
-    			  Media m = mediaService.getMedia(pm.getMediaId());
+    			  Media m = mediaService.getMedia(pm.getMedia().getId());
     			  System.out.println(m.getTitle());
     			  mediaList.add(m);    			
     		   }
@@ -156,15 +157,15 @@ public class DashboardProductController {
 	public @ResponseBody Map<String, ?> getAllProducts(){
 		Map<String, Object> map = new HashMap<>();
 		List<Product> products = productService.getProducts();
-		
-		for(Product p: products) {
+		List<ProductDetail> productDetails   = new ArrayList<>();
+		for(Product product: products) {
+			productDetails.add(new ProductDetail(product));
 			
-			System.out.println( "Otoman "+ p.getProductMedia());
 		}
 		map.put("draw", 1);
-		map.put("recordsTotal", products.size());
-		map.put("recordsFiltered", products.size());
-		map.put("data", products);
+		map.put("recordsTotal", productDetails.size());
+		map.put("recordsFiltered", productDetails.size());
+		map.put("data", productDetails);
 		
 		System.out.println(map);
 		

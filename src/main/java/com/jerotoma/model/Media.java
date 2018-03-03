@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.persistence.Column;
@@ -12,7 +13,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="media")
@@ -45,6 +50,10 @@ public class Media implements Serializable{
 	
 	@Column(name="size")
 	private long size;
+	
+	@OneToOne(mappedBy="media")
+	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
+	private ProductMedia productMedia;
 	
 	public Media() {
 		
@@ -109,5 +118,15 @@ public class Media implements Serializable{
 	public void setAbsolutPath(String absolutPath) {
 		this.absolutPath = absolutPath;
 	}
+
+	public ProductMedia getProductMedia() {
+		return productMedia;
+	}
+
+	public void setProductMedia(ProductMedia productMedia) {
+		this.productMedia = productMedia;
+	}
+	
+	
 
 }

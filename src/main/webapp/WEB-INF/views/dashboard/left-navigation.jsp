@@ -43,30 +43,7 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Products</span>
+            <i class="	fa fa-briefcase"></i> <span>Products</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -75,28 +52,39 @@
            <c:url var="baseURL" value='/dashboard/products'></c:url>
             <li><a href="${baseURL}/"><i class="fa fa-circle-o"></i> All Products</a></li>
             <li><a href="${baseURL}/create"><i class="fa fa-circle-o"></i> Add New</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Categories
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="${baseURL}/categories"><i class="fa fa-circle-o"></i> All Product Categories</a></li>
-                <li><a href="${baseURL}/categories/create"><i class="fa fa-circle-o"></i> Add New</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Product Attributes
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="${baseURL}/attributes"><i class="fa fa-circle-o"></i> All Product Attributes</a></li>
-                <li><a href="${baseURL}/attributes/create"><i class="fa fa-circle-o"></i> Add New</a></li>
-              </ul>
-            </li>
+             <li><a href="${baseURL}/categories"><i class="fa fa-circle-o"></i>Categories</a></li>
+             <li><a href="${baseURL}/attributes"><i class="fa fa-circle-o"></i>Attributes</a></li>           
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i>
+            <span>Users</span>
+            <span class="pull-right-container">
+               <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <c:url var="baseURL" value='/dashboard/users'></c:url>
+            <li><a href="${baseURL}/"><i class="fa fa-circle-o"></i> All Users</a></li>
+            <li><a href="${baseURL}/create"><i class="fa fa-circle-o"></i> Add New</a></li>
+             <li><a href="${baseURL}/members"><i class="fa fa-circle-o"></i>Members</a></li>
+             <li><a href="${baseURL}/merchants"><i class="fa fa-circle-o"></i>Merchants</a></li>  
+             <li><a href="${baseURL}/social-sellers"><i class="fa fa-circle-o"></i>Social Sellers</a></li>  
+          </ul>
+        </li>
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-picture-o"></i>
+            <span>Media</span>
+            <span class="pull-right-container">
+               <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <c:url var="baseURL" value='/dashboard/users'></c:url>
+            <li><a href="${baseURL}/"><i class="fa fa-circle-o"></i> All Media</a></li>
+            <li><a href="${baseURL}/create"><i class="fa fa-circle-o"></i> Add New</a></li>             
           </ul>
         </li>
         <li class="treeview">

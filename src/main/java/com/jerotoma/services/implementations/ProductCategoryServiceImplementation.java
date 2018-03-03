@@ -2,9 +2,10 @@ package com.jerotoma.services.implementations;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.jerotoma.dao.ProductCategoryDao;
 import com.jerotoma.model.ProductCategory;
@@ -27,6 +28,12 @@ public class ProductCategoryServiceImplementation implements ProductCategoryServ
 	public List<ProductCategory> getProductCategories() {
 		// TODO Auto-generated method stub
 		return productCategoryDao.getProductCategories();
+	}
+
+	@Override
+	public List<ProductCategory> getProductCategories(int product_id) {
+		// TODO Auto-generated method stub
+		return productCategoryDao.getProductCategories(product_id);
 	}
 
 	@Override

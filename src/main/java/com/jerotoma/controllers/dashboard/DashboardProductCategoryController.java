@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jerotoma.model.Product;
-import com.jerotoma.model.ProductCategory;
+import com.jerotoma.model.Category;
 import com.jerotoma.model.User;
-import com.jerotoma.services.ProductCategoryService;
+import com.jerotoma.services.CategoryService;
 import com.jerotoma.services.UserService;
 
 @Controller
@@ -26,14 +26,14 @@ public class DashboardProductCategoryController {
 	UserService userService;
 	
 	@Autowired
-	ProductCategoryService productCategoryService;
+	CategoryService categoryService;
 	
 	@RequestMapping(value= {"","/"},method=RequestMethod.GET)
 	public ModelAndView getIndexView(Principal principal) {
 		String username = principal.getName();
 		User user = userService.getCurrentUser(username);
 		ModelAndView view = new ModelAndView();
-		view.setViewName("dashboard/pages/categories/index");
+		view.setViewName("dashboard/shop/categories/index");
 		view.addObject("title", "Categories");
 		view.addObject("user", user);
 		return view;
@@ -43,7 +43,7 @@ public class DashboardProductCategoryController {
 	public ModelAndView getProductView() {
 		
 		ModelAndView view = new ModelAndView();
-		view.setViewName("dashboard/pages/categories/create");
+		view.setViewName("dashboard/shop/categories/create");
 		view.addObject("title", "Categories");
 		return view;
 		
@@ -53,7 +53,7 @@ public class DashboardProductCategoryController {
 	public ModelAndView getShowView() {
 		
 		ModelAndView view = new ModelAndView();
-		view.setViewName("dashboard/pages/categories/show");
+		view.setViewName("dashboard/shop/categories/show");
 		view.addObject("title", "Categories");
 		return view; 
 		
@@ -62,7 +62,7 @@ public class DashboardProductCategoryController {
 	@RequestMapping(value= {"/all"},method=RequestMethod.GET)
 	public @ResponseBody Map<String, ?> getAllProducts(){
 		Map<String, Object> map = new HashMap<>();
-		List<ProductCategory> productCategories = productCategoryService.getProductCategories();
+		List<Category> productCategories = categoryService.getProductCategories();
 		
 		map.put("draw", 1);
 		map.put("recordsTotal", productCategories.size());

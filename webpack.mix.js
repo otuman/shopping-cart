@@ -14,11 +14,7 @@ let mix = require('laravel-mix');
 mix.setPublicPath('src/main/webapp/resources/assets/')
    .js('src/main/resources/assets/js/vendors.bundle.min.js','js/')
    .js('src/main/resources/assets/js/app.js', 'js/')
-   .sass('src/main/resources/assets/sass/app.scss', 'css/')
-   .combine([
-       'src/main/resources/assets/vendors/adminlte/css/skins/_all-skins.min.css',
-	   'node_modules/admin-lte/dist/css/AdminLTE.min.css',
-	    ], 'css/vendors.bundle.min.css')   
+   .sass('src/main/resources/assets/sass/app.scss', 'css/')   
    .version();
 
 

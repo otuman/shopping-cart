@@ -15,36 +15,36 @@ import com.jerotoma.services.UserService;
 public class UserServiceImplementation implements UserService {
 	
 	@Autowired
-	UserDao useDao;
+	UserDao userDao;
 
 	public List<User> users() {
 		// TODO Auto-generated method stub
-		return useDao.users();
+		return userDao.users();
 	}
 
 	public boolean delete(User user) {
 		// TODO Auto-generated method stub
-		return useDao.delete(user);
+		return userDao.delete(user);
 	}
 
 	public int save(User user) {
 		// TODO Auto-generated method stub
-		return useDao.save(user);
+		return userDao.save(user);
 	}
 
 	public int update(User user) {
 		// TODO Auto-generated method stub
-		return useDao.update(user);
+		return userDao.update(user);
 	}
 
 	public User getCurrentUser(int id) {
 		// TODO Auto-generated method stub
-		return useDao.getCurrentUser(id);
+		return userDao.getCurrentUser(id);
 	}
 	
 	public User getCurrentUser(String username) {
 		// TODO Auto-generated method stub
-		return useDao.getCurrentUser(username);
+		return userDao.getCurrentUser(username);
 	}
 
 }

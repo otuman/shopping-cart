@@ -50,7 +50,7 @@ public class DashboardController {
 		model.addAttribute("title", "User Profile");
 		model.addAttribute("username", username);
 		model.addAttribute("message", "Profile");
-		return "dashboard/pages/profile";		
+		return "dashboard/shop/profile";		
 		
 	}
 	
@@ -61,7 +61,7 @@ public class DashboardController {
 		model.addAttribute("title", "User Settings");
 		model.addAttribute("username", username);
 		model.addAttribute("message", "Settings");
-		return "dashboard/pages/settings";		
+		return "dashboard/shop/settings";		
 		
 	}
 	

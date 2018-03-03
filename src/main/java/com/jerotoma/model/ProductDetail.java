@@ -25,14 +25,12 @@ public class ProductDetail {
 	
 	private Date updatedOn;
 	
-	private List<ProductCategory> categories;
-	private List<ProductAttribute> attribute;
-	
-	private List<ProductMedia> productMedia;
-	
-	
+	private List<Category> categories;
+	private List<Attribute> attributes;	
 	private  List<Media> mediaList;
-
+    
+	private String category;
+	private String attribute;
 
 	public ProductDetail(Product product) {
 		
@@ -44,7 +42,90 @@ public class ProductDetail {
 		this.createdOn=product.getCreatedOn();
 		this.updatedOn=product.getUpdatedOn();
 		this.mediaList = product.getMediaList();
-		this.productMedia=product.getProductMedia();
+		this.category = "";
+		this.attribute = "";
+		
+	}
+    
+	
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
+
+	public List<Attribute> getAttributes() {
+		return attributes;
+	}
+
+
+	public void setAttributes(List<Attribute> attributes) {
+		this.attributes = attributes;
+	}
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
+	public String getAttribute() {
+		return attribute;
+	}
+
+
+	public void setAttribute(String attribute) {
+		this.attribute = attribute;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
+	}
+
+
+	public void setMediaList(List<Media> mediaList) {
+		this.mediaList = mediaList;
 	}
 
 
@@ -82,10 +163,6 @@ public class ProductDetail {
 		return updatedOn;
 	}
 
-
-	public List<ProductMedia> getProductMedia() {
-		return productMedia;
-	}
 
 
 	public List<Media> getMediaList() {

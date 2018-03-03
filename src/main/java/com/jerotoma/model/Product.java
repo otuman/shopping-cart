@@ -58,17 +58,24 @@ public class Product implements Serializable {
 	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
 	private List<ProductMedia> productMedia;
 	
-	
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "product_categories", joinColumns=@JoinColumn(name="product_id", referencedColumnName="id"), inverseJoinColumns=@JoinColumn(name="product_category",referencedColumnName="id"))
-	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
-	private List<ProductCategory> productCategories;
-	
-	
 	@OneToMany(mappedBy="product")
 	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
 	private List<ProductAttribute> productAttributes;
+	
+	@OneToMany(mappedBy="product")
+	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
+	private List<ProductCategory> productCategories;
+	
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "product_categories", joinColumns=@JoinColumn(name="product_id", referencedColumnName="id"), inverseJoinColumns=@JoinColumn(name="category_id",referencedColumnName="id"))
+//	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
+//	private List<ProductCategory> productCategories;
+//	
+//	
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "product_attributes", joinColumns=@JoinColumn(name="product_id", referencedColumnName="id"), inverseJoinColumns=@JoinColumn(name="attribute_id",referencedColumnName="id"))
+//	@JsonManagedReference     //This help to solve the recursive issue with Jackson json
+//	private List<ProductAttribute> productAttributes;
 	
 	
 	@Transient
@@ -155,6 +162,26 @@ public class Product implements Serializable {
 
 	public void setMediaList(List<Media> mediaList) {
 		this.mediaList = mediaList;
+	}
+
+
+	public List<ProductCategory> getProductCategories() {
+		return productCategories;
+	}
+
+
+	public void setProductCategories(List<ProductCategory> productCategories) {
+		this.productCategories = productCategories;
+	}
+
+
+	public List<ProductAttribute> getProductAttributes() {
+		return productAttributes;
+	}
+
+
+	public void setProductAttributes(List<ProductAttribute> productAttributes) {
+		this.productAttributes = productAttributes;
 	}
 	
 	
